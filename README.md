@@ -19,9 +19,6 @@ Project Link: [https://sparkly-kataifi-14d40e.netlify.app/](https://sparkly-kata
 ## Notes
 This webpage seamlessly adapts to a multitude of devices and screen sizes, ensuring an optimal viewing experience for users across desktops, laptops, tablets, and smartphones.
 
-![image](https://github.com/risyaalex/Calculator/assets/140414559/bfd25d62-3b7f-41e6-818f-8140c7574ba4) 
-![image](https://github.com/risyaalex/Calculator/assets/140414559/e9924692-7c87-4a05-ba42-05a6e66943fe)
-
 ## Contact
 Oleksandra Antonova - werba2010@gmail.com
 
