@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    min-height: 90vh;
+}
+
+h1 {
+    font-size: 2.3rem;
+    text-align: center;
+    margin: 50px 0;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 40px 20px;
+}
+
+.grid {
+    text-align: center;
+    min-height: 70vh;
+}
+
+.app {
+    background-color: #eee;
+    max-width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#search-button {
+    display: inline-block;
+    background-color: #1d7c03;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#search-button:hover {
+    background-color: #2eaa0b;
+}
+
+
+
+.error {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffc2c2;
+    border-radius: 4px;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+/* Footer */
+
+#footer {
+    padding: 30px 35px 20px;
+    background-color: #000;
+    width: calc(100% - 70px);
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-icons li {
+    list-style-type: none;
+    flex-basis: 40px;
+}
+
+.footer-icons .fa-brands {
+    margin: 0 2px;
+}
+
+.copy {
+    font-size: 0.8em;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: right;
+    color: #fff;
+}
+
+@media only screen and (max-width: 576px) {
+
+    h2 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin: 20px 20px;
+    }
+
+    .grid {
+        display: block;
+    }
+
+    .app {
+        max-width: 100%;
+        padding: 20px 30px;
+    }
+
+    #search-button {
+        margin: 20px 0 0 0;
+    }
+
+}

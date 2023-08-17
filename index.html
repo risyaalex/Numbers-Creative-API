@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Number Application</title>
+    <title>Numbers Application</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <!-- Favicon -->
@@ -14,5 +14,50 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <h1>Numbers</h1>
+      <div class="grid">
+        <section>
+          <div class="app">
+            <h2>Get a fact about a day</h2>
+            <input type="text" id="day-input" placeholder="Enter day" />
+            <input type="text" id="month-input" placeholder="Enter month" />
+            <button id="search-button">Search</button>
+            <div id="date-info"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer id="footer">
+      <!-- Social media -->
+      <ul class="footer-icons">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/oleksandra-antonova-683017268/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin fa-2xl" style="color: #fff"></i
+          ></a>
+        </li>
+        <li>
+          <a href="https://github.com/risyaalex/" target="_blank"
+            ><i
+              class="fa-brands fa-square-github fa-2xl"
+              style="color: #fff"
+            ></i
+          ></a>
+        </li>
+        <!-- Copyright -->
+        <li class="copy">
+          <script>
+            document.write(
+              "<p>All rights reserved &copy; " +
+                new Date().getFullYear() +
+                " Oleksandra Antonova</p>"
+            );
+          </script>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>
