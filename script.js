@@ -1,48 +1,72 @@
-const dayInput = document.getElementById('day-input');
-const monthInput = document.getElementById('month-input');
-const weatherInfo = document.getElementById('date-info');
-const searchButton = document.getElementById('search-button');
+  const dayInput = document.getElementById('day-input');
+  const monthInput = document.getElementById('month-input');
+  const dateInfo = document.getElementById('date-info');
+  const searchButton = document.getElementById('search-button');
 
-let data = null;
-let isLoading = false;
+  let result = "";
+  let isLoading = false;
 
-// fetch Data
-async function fetchData(day, month) {
+  // fetch Data
+  async function fetchData(day, month) {
 
-	const url = `https://numbersapi.p.rapidapi.com/${day}/${month}/date?fragment=true&json=true`;
-	console.log("fetchData:", url);
-	const options = {
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key': '5716441854msh420403d54a0ef24p1e4bcdjsn4d01a8c6b8cd',
-			'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
-		}
-	};
+    const url = `https://numbersapi.p.rapidapi.com/${day}/${month}/date?fragment=true&json=true`;
+    console.log("fetchData:", url);
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '5716441854msh420403d54a0ef24p1e4bcdjsn4d01a8c6b8cd',
+        'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+      }
+    };
 
     try {
-    isLoading = true;
-    const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-        if (!response.ok) {
-        data = null;
+      isLoading = true;
+      const response = await fetch(url, options);
+      if (!response.ok) {
         throw new Error("Network response was not ok"); 
+      } else {
+        result = await response.json();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+      finally {
+      isLoading = false;
+      renderData(result);
+      // console.log("finally:", result);
+    }
+  }
+  // render Data
+
+  function renderData(data) {
+    let content = "";
+    console.log("renderData:", data);
+    if (data) {
+      const year = data.year >= 0 ? data.year : `${Math.abs(data.year)} BC`;
+      content = `<div class="facts"><h3 class="day">On this day, ${monthInput.value}/${dayInput.value}/${year}</h3>
+      <p>${data.text}</p></div>`;
+    } else {
+      content = `<p class="error">Data unavailable...</p>`;
+    }
+    console.log("Text:", data.text)
+    dateInfo.innerHTML = isLoading ? `<p class="error">Loading Data...</p>` : content;
+
+  }
+
+  // onclick search Button
+
+  function searchData() {
+    const dayInputValue = parseInt(dayInput.value.trim(), 10);
+    const monthInputValue = parseInt(monthInput.value.trim(), 10);
+    
+    if ((dayInputValue >= 1 && dayInputValue <= 31) && (monthInputValue >= 1 && monthInputValue <= 12)) {
+      fetchData(dayInputValue, monthInputValue);
+      console.log("Day:", dayInputValue);
+      console.log("Month:", monthInputValue);
+    } else {
+      dateInfo.innerHTML = `<p class="error">Please enter valid date</p>`;
     }
     
-    data = await response.json();
-    console.log("Loading data...");
-    console.log("FETCHING DATA...");
-  } catch (error) {
-    console.error(
-      "There was a problem with the fetch operation:",
-      error.message
-    );
-  } finally {
-    isLoading = false;
-    // fetchNumberData(data);
-    // console.log("fetchData:", data);
-    console.log("END OF FETCHING DATA...");
-  }
-}
+  }    
 
-fetchData(1, 12)
+searchButton.addEventListener('click', searchData);
