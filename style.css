@@ -8,19 +8,30 @@
 body {
     font-family: 'Roboto Mono', monospace;
     min-height: 90vh;
+    background: url("bg.jpg") no-repeat fixed center / cover;
+}
+
+input {
+    min-width: 30px;
+    padding: 10px;
+    border-radius: 5px;
+}
+label {
+    color: #1d7c03;
+    font-weight: bold;
 }
 
 h1 {
-    font-size: 2.3rem;
+    font-size: 3rem;
     text-align: center;
-    margin: 50px 0;
+    margin: 40px 0;
     text-transform: uppercase;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
+    text-shadow: 0 0 5px #fff;
 }
 
 h2 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     text-align: center;
     margin: 40px 20px;
 }
@@ -31,7 +42,7 @@ h2 {
 }
 
 .app {
-    background-color: #eee;
+    background-color: #e9e9e9;
     max-width: 40%;
     margin: 20px auto;
     padding: 20px;
@@ -40,6 +51,21 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.facts {
+    background-color: #fff;
+    padding: 20px;
+}
+
+#date-info {
+    margin-top: 20px;
+}
+
+.day {
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 40px 20px;
+    color: #1d7c03;
+}
 
 #search-button {
     display: inline-block;
@@ -56,8 +82,6 @@ h2 {
 #search-button:hover {
     background-color: #2eaa0b;
 }
-
-
 
 .error {
     margin-top: 20px;
