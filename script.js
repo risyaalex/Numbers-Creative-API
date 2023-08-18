@@ -39,19 +39,26 @@
   // render Data
 
   function renderData(data) {
-    let content = "";
-    console.log("renderData:", data);
-    if (data) {
-      const year = data.year >= 0 ? data.year : `${Math.abs(data.year)} BC`;
-      content = `<div class="facts"><h3 class="day">On this day, ${monthInput.value}/${dayInput.value}/${year}</h3>
-      <p>${data.text}</p></div>`;
-    } else {
-      content = `<p class="error">Data unavailable...</p>`;
-    }
-    console.log("Text:", data.text)
+  let content = "";
+  console.log("renderData:", data);
+  if (data) {
+    const year = data.year >= 0 ? data.year : `${Math.abs(data.year)} BC`;
+    const textContent = data.text;
+    content = `<div class="facts"><h3 class="day">On this day, ${monthInput.value}/${dayInput.value}/${year}</h3>
+    <p id="typed-text"></p></div>`;
+    
     dateInfo.innerHTML = isLoading ? `<p class="error">Loading Data...</p>` : content;
 
+    const typedText = document.getElementById("typed-text");
+    if (typedText) {
+      typeWriterEffect(typedText, textContent, 50);
+    }
+
+  } else {
+    content = `<p class="error">Data unavailable...</p>`;
+    dateInfo.innerHTML = isLoading ? `<p class="error">Loading Data...</p>` : content;
   }
+}
 
   // onclick search Button
 
@@ -70,3 +77,17 @@
   }    
 
 searchButton.addEventListener('click', searchData);
+
+// Typing effect
+
+function typeWriterEffect(element, text, speed) {
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}

@@ -58,6 +58,7 @@ h2 {
 .facts {
     background-color: #fff;
     padding: 20px;
+    min-height: 170px;
 }
 
 #date-info {
@@ -136,6 +137,13 @@ h2 {
         font-size: 1.4rem;
         text-align: center;
         margin: 20px 20px;
+    }
+
+    .day {
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 20px 20px;
+        color: #1d7c03;
     }
 
     .grid {
