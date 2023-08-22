@@ -48,7 +48,7 @@ window.addEventListener('load', displaySavedFacts);
     const year = data.year >= 0 ? data.year : `${Math.abs(data.year)} BC`;
     const textContent = data.text;
     content = `<div class="facts"><h3 class="day">On this day, ${monthInput.value}/${dayInput.value}/${year}</h3>
-    <p id="typed-text"></p><p class="right"><button class="save-button"><img src="save.svg" alt="">  Save</button></p></div>`;
+    <p id="typed-text"></p><p><button class="save-button"><img src="save.svg" alt="">  Save</button></p></div>`;
     
 
     dateInfo.innerHTML = isLoading ? `<p class="error">Loading Data...</p>` : content;
@@ -173,4 +173,16 @@ function displaySavedFacts() {
   } else {
     savedFactsContainer.style.display = 'none';
   }
+}
+
+// clear all
+
+const clearButton = document.getElementById('clear-button');
+clearButton.addEventListener('click', () => {
+  clearAllFacts();
+  displaySavedFacts();
+});
+
+function clearAllFacts() {
+  localStorage.removeItem('savedFacts');
 }

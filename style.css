@@ -28,7 +28,7 @@ input:focus {
 h1 {
     font-size: 3rem;
     text-align: center;
-    margin: 20px 0;
+    margin: 40px 0;
     text-transform: uppercase;
     padding: 20px;
     text-shadow: 0 0 5px #fff;
@@ -114,11 +114,7 @@ h3 {
     border-radius: 10px;
 }
 
-.right {
-    text-align: right;
-}
-
-.save-button {
+.save-button, #clear-button {
     box-shadow: -3px -3px 10px #cbcbcb, 3px 3px 10px #cbcbcb;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
@@ -128,7 +124,6 @@ h3 {
     border-radius: 20px;
     font-size: 1rem;
     /* text-transform: uppercase; */
-    max-width: 60%;
     margin: 40px 0 0;
     display: flex;
 }
@@ -137,11 +132,11 @@ h3 {
     width: 18px;
 }
 
-.save-button:hover {
+.save-button:hover, #clear-button:hover {
     box-shadow: -2px -2px 5px #fff, 2px 2px 5px #999;
 }
 
-.save-button:active {
+.save-button:active, #clear-button:active {
     box-shadow: inset 1px 1px 2px #999, inset -1px -1px 2px #fff;
 }
 
