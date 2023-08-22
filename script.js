@@ -5,6 +5,8 @@
 
   let result = "";
   let isLoading = false;
+  
+window.addEventListener('load', displaySavedFacts);
 
   // fetch Data
   async function fetchData(day, month) {
@@ -36,6 +38,7 @@
       // console.log("finally:", result);
     }
   }
+  
   // render Data
 
   function renderData(data) {
@@ -45,8 +48,9 @@
     const year = data.year >= 0 ? data.year : `${Math.abs(data.year)} BC`;
     const textContent = data.text;
     content = `<div class="facts"><h3 class="day">On this day, ${monthInput.value}/${dayInput.value}/${year}</h3>
-    <p id="typed-text"></p></div>`;
+    <p id="typed-text"></p><p class="right"><button class="save-button"><img src="save.svg" alt="">  Save</button></p></div>`;
     
+
     dateInfo.innerHTML = isLoading ? `<p class="error">Loading Data...</p>` : content;
 
     const typedText = document.getElementById("typed-text");
@@ -54,6 +58,19 @@
       typeWriterEffect(typedText, textContent, 50);
     }
 
+  const saveButton = dateInfo.querySelector('.save-button');
+    if (saveButton) {
+     
+      saveButton.addEventListener('click', () => {
+        
+        saveFact({
+          date: `${monthInput.value}/${dayInput.value}/${year}`,
+          fact: textContent,
+        });
+        
+        displaySavedFacts();
+      });
+    }
   } else {
     content = `<p class="error">Data unavailable...</p>`;
     dateInfo.innerHTML = isLoading ? `<p class="error">Loading Data...</p>` : content;
@@ -90,4 +107,70 @@ function typeWriterEffect(element, text, speed) {
     }
   }
   type();
+}
+
+// save fact
+
+function saveFact(fact) {
+  const savedFacts = getSavedFacts();
+  const isDuplicate = savedFacts.some((savedFact) => {
+    return savedFact.date === fact.date && savedFact.fact === fact.fact;
+  });
+  
+  if (isDuplicate) {
+    dateInfo.innerHTML = `<p class="error">This fact is already saved.</p>`;
+    return;
+  }
+  savedFacts.push(fact);
+  localStorage.setItem('savedFacts', JSON.stringify(savedFacts));
+}
+
+// delete Saved fact
+
+function deleteFact(index) {
+  const savedFacts = getSavedFacts();
+  savedFacts.splice(index, 1);
+  localStorage.setItem('savedFacts', JSON.stringify(savedFacts));
+}
+
+// get Saved Facts
+
+function getSavedFacts() {
+  const savedFacts = localStorage.getItem('savedFacts');
+  return savedFacts ? JSON.parse(savedFacts) : [];
+}
+
+// show Saved Facts
+
+function displaySavedFacts() {
+  const savedFacts = getSavedFacts();
+  const savedFactsList = document.getElementById('saved-facts-list');
+  
+  savedFactsList.innerHTML = '';
+  
+  savedFacts.forEach((fact, index) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <div class="flex"><p>On this day,${fact.date}, ${fact.fact}.</p>
+      <button class="delete-button" data-index="${index}">❌</button></div>
+    `;
+    
+    const deleteButton = listItem.querySelector('.delete-button');
+    deleteButton.addEventListener('click', () => {
+      const indexToDelete = parseInt(deleteButton.getAttribute('data-index'));
+
+      deleteFact(indexToDelete);
+
+      displaySavedFacts();
+    });
+    
+    savedFactsList.appendChild(listItem);
+  });
+
+  const savedFactsContainer = document.querySelector('.saved-facts');
+  if (savedFacts.length > 0) {
+    savedFactsContainer.style.display = 'block';
+  } else {
+    savedFactsContainer.style.display = 'none';
+  }
 }

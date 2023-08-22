@@ -28,7 +28,7 @@ input:focus {
 h1 {
     font-size: 3rem;
     text-align: center;
-    margin: 40px 0;
+    margin: 20px 0;
     text-transform: uppercase;
     padding: 20px;
     text-shadow: 0 0 5px #fff;
@@ -38,6 +38,12 @@ h2 {
     font-size: 1.6rem;
     text-align: center;
     margin: 40px 20px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0 10px 20px;
 }
 
 .grid {
@@ -59,6 +65,7 @@ h2 {
     background-color: #fff;
     padding: 20px;
     min-height: 170px;
+    border-radius: 10px;
 }
 
 #date-info {
@@ -96,6 +103,66 @@ h2 {
     color: red;
     text-align: center;
     font-weight: bold;
+}
+
+.saved-facts {
+    margin: 20px 0;
+    background-color: #ffffff;
+    padding: 30px;
+    text-align: justify;
+    display: none;
+    border-radius: 10px;
+}
+
+.right {
+    text-align: right;
+}
+
+.save-button {
+    box-shadow: -3px -3px 10px #cbcbcb, 3px 3px 10px #cbcbcb;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    color: #333;
+    border-radius: 20px;
+    font-size: 1rem;
+    /* text-transform: uppercase; */
+    max-width: 60%;
+    margin: 40px 0 0;
+    display: flex;
+}
+
+.save-button img {
+    width: 18px;
+}
+
+.save-button:hover {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #999;
+}
+
+.save-button:active {
+    box-shadow: inset 1px 1px 2px #999, inset -1px -1px 2px #fff;
+}
+
+.saved-facts ol li {
+    margin: 10px 10px 30px 30px;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex button {
+    background-color: transparent;
+    margin-left: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.flex button:hover {
+    transform: scale(1.3);
 }
 
 
