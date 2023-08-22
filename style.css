@@ -220,5 +220,7 @@ h3 {
     #search-button {
         margin: 20px 0 0 0;
     }
-
+    .saved-facts {
+        padding: 30px 15px;
+    }
 }
