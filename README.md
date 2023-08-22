@@ -1,8 +1,10 @@
 # Numbers-Creative-API
 
-Get a random fact about any day with Numbers API By divad12 ([https://rapidapi.com/divad12/api/numbers-1](https://rapidapi.com/divad12/api/numbers-1))
+Get a random fact about any day with Numbers API By divad12 ([https://rapidapi.com/divad12/api/numbers-1](https://rapidapi.com/divad12/api/numbers-1)).
 
-![image](https://github.com/risyaalex/Numbers-Creative-API/assets/140414559/58baf56c-4a13-437a-906f-c339d8129e24)
+You can save the fact you like in local storage.
+
+![image](https://github.com/risyaalex/Numbers-Creative-API/assets/140414559/e07019b9-8e06-4dd5-9c05-f05a79129302)
 
 ## Demo
 
